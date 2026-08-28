@@ -1,0 +1,11 @@
+Model Comparison Summary
+========================
+
+                      Model                        Main idea  Parameters  Test loss  Test accuracy  Test accuracy (%)                                              Interpretation
+               Baseline CNN          Simple CNN architecture       20042     1.1902         0.5749              57.49               Underfitting; model capacity was too limited.
+               Improved CNN Deeper CNN + BatchNorm + Dropout      158506     0.5705         0.8109              81.09             Good model; better capacity and regularization.
+              Augmented CNN Improved CNN + data augmentation      158506     0.6880         0.7669              76.69      Augmentation was probably too strong for 32x32 images.
+Improved CNN + LR Scheduler Improved CNN + ReduceLROnPlateau      158506     0.4925         0.8421              84.21 Best model; smoother convergence and highest test accuracy.
+
+Conclusion:
+The Improved CNN with learning-rate scheduling achieved the best test accuracy. The Baseline CNN underfit the data due to limited capacity. The Augmented CNN reduced memorization pressure but achieved lower accuracy, probably because the selected augmentations were too strong for low-resolution CIFAR-10 images.
