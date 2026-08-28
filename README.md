@@ -1,108 +1,71 @@
-CIFAR-10 Image Classification with Convolutional Neural Networks
-Foundations of Deep Learning Project
+# CIFAR-10 Image Classification with Convolutional Neural Networks
 
-Group members:
-Mahsa Rajabi Nejad
-Maryamsadat Parpenchi
+Deep Learning project developed for the **Foundations of Deep Learning** course at the **University of Milano-Bicocca**.
 
-Project description:
-This project focuses on CIFAR-10 image classification using Convolutional Neural Networks.
-The goal is to classify 32x32 RGB images into one of 10 classes.
+## Project Overview
 
-Dataset:
-CIFAR-10
-Total images: 60,000
-Training images: 50,000
-Test images: 10,000
-Classes: 10
-Image size: 32x32x3
+This project focuses on multi-class image classification using Convolutional Neural Networks (CNNs) on the CIFAR-10 dataset.
 
+The goal was to develop and compare different CNN architectures and training strategies, starting from a simple baseline model and gradually improving its performance.
 
-Dataset source:
-CIFAR-10 official website:
-https://www.cs.toronto.edu/~kriz/cifar.html
+## Dataset
 
-Dataset format used in this project:
-CIFAR-10 MATLAB version (.mat files)
+The CIFAR-10 dataset contains **60,000 RGB images** belonging to 10 balanced classes.
 
-Note:
-The dataset files are not included in the submission because of their size.
-They can be downloaded from the official CIFAR-10 website
+- 40,000 training images
+- 10,000 validation images
+- 10,000 test images
+- Image size: 32×32×3
 
-Final selected model:
-Improved CNN + ReduceLROnPlateau
+## Models & Results
 
-Final model file:
-Models/improved_cnn_lr_scheduler_best.keras
+| Model | Test Accuracy | Test Loss |
+|---|---:|---:|
+| Baseline CNN | 57.49% | 1.1902 |
+| Improved CNN | 81.09% | 0.5705 |
+| CNN + Data Augmentation | 76.69% | 0.6880 |
+| Improved CNN + LR Scheduler | **84.21%** | **0.4925** |
 
-Final test results:
-Test accuracy: 84.21%
-Test loss: 0.4925
-Macro F1-score: 84.14%
+### Final Model
 
-Main scripts:
-01_check_dataset.py
-- Checks that all CIFAR-10 .mat files exist and can be loaded correctly.
+The best-performing model was the **Improved CNN with ReduceLROnPlateau**.
 
-02_prepare_dataset.py
-- Loads all CIFAR-10 batches.
-- Reshapes images from 3072 vectors to 32x32x3.
-- Normalizes pixel values from [0, 255] to [0, 1].
-- Splits the training data into train and validation sets.
-- Saves the prepared dataset.
+- **Test Accuracy:** 84.21%
+- **Macro F1-score:** 84.14%
+- **Best Validation Accuracy:** 84.17%
+- **Test Loss:** 0.4925
 
-03_train_baseline_cnn.py
-- Trains a simple baseline CNN.
-- Test accuracy: 57.49%
+## Technologies
 
-04_train_improved_cnn.py
-- Trains a deeper CNN with Batch Normalization, MaxPooling, Dropout, and Adam optimizer.
-- Test accuracy: 81.09%
+- Python
+- TensorFlow
+- Keras
+- NumPy
+- Matplotlib
+- Scikit-learn
+- Convolutional Neural Networks
+- Computer Vision
 
-05_evaluate_improved_cnn.py
-- Evaluates the improved CNN.
-- Saves classification report, confusion matrix, and correct/wrong prediction examples.
+## Techniques
 
-06_train_augmented_cnn.py
-- Tests data augmentation.
-- Test accuracy: 76.69%
-- The augmentation policy was probably too strong for 32x32 images.
+- Image preprocessing and normalization
+- CNN architecture design
+- Batch Normalization
+- MaxPooling
+- Dropout
+- Global Average Pooling
+- Data Augmentation
+- EarlyStopping
+- ModelCheckpoint
+- ReduceLROnPlateau
+- Confusion Matrix Analysis
 
-07_summarize_results.py
-- Summarizes model results.
-- Saves model comparison table and accuracy/loss plots.
+## Repository Structure
 
-08_train_improved_cnn_lr_scheduler.py
-- Trains the improved CNN with ReduceLROnPlateau.
-- This is the final selected model.
-- Test accuracy: 84.21%
-
-09_evaluate_final_model.py
-- Evaluates the final model.
-- Saves final classification report, final confusion matrix, and correct/wrong prediction examples.
-
-Important output files:
-Figures/model_comparison_accuracy.png
-Figures/model_comparison_loss.png
-Figures/final_model_confusion_matrix.png
-Figures/final_model_correct_predictions.png
-Figures/final_model_wrong_predictions.png
-
-Result/final_model_classification_report.txt
-Result/model_comparison.txt
-
-How to run the project:
-Run the scripts in numerical order from the project root folder.
-
-Example:
-python Scripts/01_check_dataset.py
-python Scripts/02_prepare_dataset.py
-python Scripts/03_train_baseline_cnn.py
-python Scripts/04_train_improved_cnn.py
-python Scripts/06_train_augmented_cnn.py
-python Scripts/08_train_improved_cnn_lr_scheduler.py
-python Scripts/09_evaluate_final_model.py
-
-Note:
-The final model is already trained and saved in:
-Models/improved_cnn_lr_scheduler_best.keras
+```text
+├── Figures/
+├── Models/
+├── Presentation/
+├── Result/
+├── Scripts/
+└── README.md
